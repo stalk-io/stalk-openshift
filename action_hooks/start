@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd $OPENSHIFT_REPO_DIR
+
+. ".openshift/config"
+
+cd $EXAMPLE_DIR
+
+echo "Starting Vert.x application!"
+
+if [[ -e $SERVER_NAME ]]; then
+	nohup bash -c "exec 'vertx' 'run' '${SERVER_NAME}' '-conf' '${CONFIG_NAME}' &> ${OPENSHIFT_LOG_DIR}vert.x.log" &> /dev/null &
+    echo "server name   - ${SERVER_NAME}"
+    echo "configuration - ${CONFIG_NAME}"
+	echo $! > .openshift/application.pid
+else
+	echo "Server Name does not exists."
+fi

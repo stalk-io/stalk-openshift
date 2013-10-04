@@ -1,0 +1,8 @@
+
+VERTX_VERSION="2.0.1.final"
+
+CLASSPATH="${OPENSHIFT_REPO_DIR}lib:$CLASSPATH"
+PATH="${OPENSHIFT_DATA_DIR}vert.x-${VERTX_VERSION}/bin:$PATH"
+
+SERVER_NAME="io.stalk.server.MessageServer"
+CONFIG_NAME="${OPENSHIFT_REPO_DIR}config/msg-server.json"
